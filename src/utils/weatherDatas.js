@@ -55,3 +55,11 @@ export const fetchWeatherHourly = async (city) => {
     return null;
   }
 };
+
+export const formatTo12Hour = (timeStr) => {
+  const [hour, minute] = timeStr.split(':');
+  const hourNum = parseInt(hour, 10);
+  const ampm = hourNum >= 12 ? 'PM' : 'AM';
+  const formattedHour = hourNum % 12 === 0 ? 12 : hourNum % 12;
+  return `${formattedHour}:${minute} ${ampm}`;
+};

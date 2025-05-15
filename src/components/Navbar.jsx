@@ -23,7 +23,7 @@ const Navbar = ({ onToggle, darkMode, onSearch }) => {
             placeholder="Search city..."
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            className="px-3 py-1 rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white focus:outline-none"
+            className="px-3 py-1 mx-2 w-full sm:w-[200px] md:w-[500px] rounded-md border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white focus:outline-none"
             />
             <button type="submit" className="p-2 text-blue-600 dark:text-yellow-400">
             <Search />
