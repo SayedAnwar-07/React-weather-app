@@ -19,21 +19,36 @@ const App = () => {
   };
 
   return (
-    <div className={`min-h-screen ${darkMode ? "dark bg-gray-800 text-white" : "bg-gray-100 text-black"}`}>
+    <div className={`min-h-screen transition-colors duration-300 ${darkMode ? "dark bg-gray-900 text-gray-100" : "bg-gray-50 text-gray-900"}`}>
       <Navbar darkMode={darkMode} onToggle={handleToggle} onSearch={handleSearch} />
 
-      <main className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4">
-        <div className="md:col-span-1">
-          <CurrentData darkMode={darkMode} city={city} />
+      <main className="container mx-auto p-4 lg:p-6">
+        {/* Top Row - Current Weather */}
+        <div className="mb-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            <div className={`rounded-2xl p-6 shadow-lg ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-50 to-white"}`}>
+              <CurrentData darkMode={darkMode} city={city} />
+            </div>
+          </div>
+          <div className="lg:col-span-1">
+            <div className={`rounded-2xl p-6 h-full shadow-lg ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-50 to-white"}`}>
+              <HourlyTime darkMode={darkMode} city={city} />
+            </div>
+          </div>
         </div>
-        <div className="md:col-span-3">
-          <WeeklyForecast darkMode={darkMode} city={city} />
-        </div>
-        <div className="md:col-span-1">
-          <HourlyTime darkMode={darkMode} city={city} />
-        </div>
-        <div className="md:col-span-3">
-          <HourlyChart darkMode={darkMode} city={city} />
+
+        {/* Bottom Row - Forecast and Charts */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-1">
+            <div className={`rounded-2xl p-6 shadow-lg ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-50 to-white"}`}>
+              <WeeklyForecast darkMode={darkMode} city={city} />
+            </div>
+          </div>
+          <div className="lg:col-span-2">
+            <div className={`rounded-2xl p-6 shadow-lg ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-900" : "bg-gradient-to-br from-blue-50 to-white"}`}>
+              <HourlyChart darkMode={darkMode} city={city} />
+            </div>
+          </div>
         </div>
       </main>
     </div>

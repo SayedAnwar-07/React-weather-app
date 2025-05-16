@@ -21,7 +21,7 @@ export const fetchWeatherData = async (city) => {
 export const fetchWeatherForecast = async (city) => {
   try {
     const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
-    const res = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=8`);
+    const res = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=10`);
     const data = await res.json();
 
     if (data.error) {
@@ -54,12 +54,4 @@ export const fetchWeatherHourly = async (city) => {
     console.error('Fetch failed:', err);
     return null;
   }
-};
-
-export const formatTo12Hour = (timeStr) => {
-  const [hour, minute] = timeStr.split(':');
-  const hourNum = parseInt(hour, 10);
-  const ampm = hourNum >= 12 ? 'PM' : 'AM';
-  const formattedHour = hourNum % 12 === 0 ? 12 : hourNum % 12;
-  return `${formattedHour}:${minute} ${ampm}`;
 };
